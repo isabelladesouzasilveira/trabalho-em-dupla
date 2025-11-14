@@ -1,0 +1,274 @@
+/* ==========================================================
+   YANIMMA E ISABELLA - EI32
+   FOLHA DE ESTILO PRINCIPAL DO SITE
+   Estrutura dividida por seções com foco em responsividade e clareza visual.
+========================================================== */
+
+/* ==============================
+   RESET GERAL
+   Remove margens, espaçamentos e define fonte padrão.
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclui bordas e padding no cálculo total do tamanho */
+    font-family: "Segoe UI", Arial, sans-serif; /* Fonte padrão do site */
+}
+
+/* ==============================
+   BODY E CONTAINER
+============================== */
+body {
+    background: #fffdf5; /* Fundo bege claro */
+    color: #333; /* Texto em tom escuro */
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+.container {
+    width: 90%; /* Largura padrão da área central */
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* ==============================
+   CABEÇALHO E NAVBAR
+============================== */
+header {
+    position: sticky; /* Fixa o cabeçalho no topo durante a rolagem */
+    top: 0;
+    z-index: 1000; /* Garante que o cabeçalho fique sobre os outros elementos */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ffcc00; /* Cor amarela vibrante */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra sutil */
+    width: 100%;
+}
+
+/* Logotipo do site */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer; /* Cursor de mão ao passar */
+}
+
+/* Lista de links da navegação */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin-left: auto;
+}
+
+/* Estilo dos links do menu */
+.nav-links li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeito sublinhado animado nos links */
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #222;
+    transition: width 0.3s ease;
+}
+
+/* Animação de hover nos links */
+.nav-links li a:hover {
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Ícone de menu para dispositivos móveis */
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #222;
+}
+
+/* Checkbox oculto que controla a abertura do menu mobile */
+#menu-toggle {
+    display: none;
+}
+
+/* ==============================
+   RESPONSIVIDADE DO MENU
+   Exibe menu lateral no mobile
+============================== */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #ffcc00;
+        flex-direction: column;
+        width: 220px;
+        padding: 1rem;
+        transform: translateX(100%); /* Esconde fora da tela */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+        border-left: 2px solid #222;
+    }
+
+    /* Quando o checkbox estiver marcado, o menu aparece */
+    #menu-toggle:checked ~ .nav-links {
+        transform: translateX(0);
+    }
+
+    /* Exibe o ícone do menu (hamburger) */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Espaçamento entre itens do menu */
+    .nav-links li {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ==============================
+   SEÇÕES (geral)
+============================== */
+section {
+    padding: 3rem 0; /* Espaçamento interno vertical */
+}
+
+/* Título de cada seção */
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #222;
+}
+
+/* ==============================
+   BARRA DE PESQUISA
+============================== */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 0.5rem; /* Espaço entre input e botão */
+}
+
+/* Campo de texto da busca */
+.search-bar input {
+    padding: 0.8rem;
+    width: 300px;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Efeito ao focar no campo de busca */
+.search-bar input:focus {
+    border-color: #ffaa00;
+    box-shadow: 0 0 8px rgba(255,170,0,0.4);
+}
+
+/* Botão da barra de busca */
+.search-bar .btn {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    background-color: #ffcc00;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.search-bar .btn:hover {
+    background-color: #ffaa00;
+}
+
+/* ==============================
+   PRODUTOS
+============================== */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; /* Espaço entre cards */
+}
+
+/* Card individual de produto */
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito ao passar o mouse no card */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Imagem do produto */
+.product-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Preço do produto */
+.product-price {
+    font-size: 1.2rem;
+    color: #ff6600;
+    margin: 0.5rem 0 1rem;
+}
+
+/* ==============================
+   BOTÕES (geral)
+============================== */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    margin: 0.3rem;
+    border: none;
+    background-color: #ffcc00;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Efeito hover nos botões */
+.btn:hover {
+    background-color: #ffaa00;
+}
+
+/* ==============================
+   RODAPÉ
+============================== */
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    border-top: 5px solid #ffcc00; /* Linha superior amarela */
+}
