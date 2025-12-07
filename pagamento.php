@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Monta o comando SQL para inserir um novo pedido na tabela "pedidos".
         // Os valores são obtidos diretamente das variáveis extraídas do POST.
-        $sql = "INSERT INTO pedidos (usuario, produto, valor, pagamento) VALUES ('$usuario', '$produto', '$valor', '$pagamento')";
+        $sql = "INSERT INTO pedidos (produto, preco, comprador)
+        VALUES ('$produto', '$preco', '$comprador')";
 
         // Executa a consulta SQL no banco de dados.
         if (mysqli_query($con, $sql)) {
